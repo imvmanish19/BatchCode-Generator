@@ -1,5 +1,5 @@
 const {db,DataTypes,Op} = require('./connect');
-
+const {Batch,Center,Course,Teacher,Season} = require('./model')
 //Associations
 
 Batch.belongsTo(Course);

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const {Center,Season,Course} = require('./model')
+const {Center,Season,Course,Batch} = require('./model')
+const {db} = require('./connect');
 
 app.set('view engine','hbs');
 app.set('views','public')
@@ -35,6 +36,20 @@ app.post('/batchcode',async (req,res,next) => {
     batchcode+=req.body.season
     batchcode+=req.body.batchno;
     res.send(batchcode)
+    try {
+        const batch = Batch.create({
+            code: batchcode,
+            year: req.body.year,
+            start: Date.parse(req.body.start),
+            end: Date.parse(req.body.end),
+            seasonId: req.body.season,
+            courseId: req.body.course,
+            centerId: req.body.course
+        });
+    }
+    catch(e) {
+        console.error(e);
+    }
 });
 
 module.exports = {
