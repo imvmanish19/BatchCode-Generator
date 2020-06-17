@@ -21,7 +21,21 @@ app.get('/batchcode',async (req,res) => {
     catch(e) {
         console.error(e);
     }
-})
+});
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+app.post('/batchcode',async (req,res,next) => {
+    let batchcode = '';
+    //WDPP18S1 Format
+    batchcode+=req.body.course
+    batchcode+=req.body.center
+    batchcode+=req.body.year.substr(2)
+    batchcode+=req.body.season
+    batchcode+=req.body.batchno;
+    res.send(batchcode)
+});
 
 module.exports = {
     app
