@@ -54,3 +54,12 @@ const Batch = db.define('batch', {
 });
 
 // db.sync()
+
+exports = module.exports = {
+    Season,
+    Center,
+    db,
+    Course,
+    Teacher,
+    Batch
+}
