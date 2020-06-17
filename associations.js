@@ -10,4 +10,4 @@ Course.hasMany(Batch);
 Center.hasMany(Batch);
 Season.hasMany(Batch);
 
-// db.sync()
+// db.sync({force: true})

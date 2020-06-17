@@ -52,6 +52,13 @@ app.post('/batchcode',async (req,res,next) => {
     }
 });
 
+app.get('/batchdata',async (req,res) => {
+    const data = await Batch.findAll()
+    res.render('table',{
+        data
+    })
+});
+
 module.exports = {
     app
 }
